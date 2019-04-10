@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <title>ToDo List App</title>
+</head>
+
+<body>
+  <div class="container mt-4">
+    <h1 class="text-center mb-4">ToDo List App</h1>
+
+    <form action="/todo" method="POST">
+      <div class="form-row">
+        <div class="form-group col-md-10">
+          <input type="text" name="todo" id="todo" class="form-control" placeholder="Add ToDo....">
+        </div>
+        <div class="col-md-2">
+          <button type="submit" class="btn btn-success btn-block">Save</button>
+        </div>
+      </div>
+    </form>
+    <% todos.forEach((todo)=>{ %>
+    <table class="table table-striped">
+      <tbody>
+        <tr>
+          <td width="85%">
+            <% if(todo.completed == true){ %>
+            <h3><del><%= todo.todo %></del></h3>
+            <% }else{ %>
+            <h3><%= todo.todo %></h3>
+            <% } %>
+          </td>
+          <% if(todo.completed == false){ %>
+          <td><a href="/todo/completed/<%=todo.id%>" class="btn btn-secondary">Completed</a></td>
+          <% } %>
+          <td><a href="/todo/<%=todo.id%>" class="btn btn-primary">Edit</a></td>
+          <td><a href="/todo/delete/<%=todo.id%>" class="btn btn-danger">Delete</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- <div class="card card-body mb-2">
+      <h3><%= todo.todo %></h3>
+      <a href="/todo/<%=todo.id%>" class="btn btn-primary btn-xs float-right">Edit</a>
+      <a href="/todo/delete/<%=todo.id%>" class="btn btn-danger">Delete</a>
+    </div> -->
+    <% }) %>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+  </script>
+</body>
+
+</html>
