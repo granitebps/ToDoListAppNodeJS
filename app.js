@@ -5,7 +5,7 @@ const bodyparser = require('body-parser');
 const app = express();
 
 // Connect to database
-mongoose.connect('mongodb+srv://granitebps:granitebps@gbps-cc4hf.mongodb.net/test?retryWrites=true', {
+mongoose.connect('Your Custom MongoDB URL', {
     useNewUrlParser: true
   })
   .then(() => {
